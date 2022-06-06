@@ -190,7 +190,7 @@ int selectionSort(int *a) //배열을 선택정렬하는 함수
 	return 0;
 }
 
-int insertionSort(int *a) //배열을 삽입 정렬하는 함수
+int insertionSort(int *a) //배열을 삽입정렬하는 함수
 {
 	int i, j, t;
 
@@ -201,23 +201,23 @@ int insertionSort(int *a) //배열을 삽입 정렬하는 함수
 
 	for(i = 1; i < MAX_ARRAY_SIZE; i++)
 	{
-		t = a[i];
-		j = i;
-		while (a[j-1] > t && j > 0)
+		t = a[i]; //정렬되지 않은 배열의 첫 번째 원소 저장
+		j = i; //정렬되지 않은 배열의 첫 번째 원소 위치 저장
+		while (a[j-1] > t && j > 0) //정렬된 원소가 더 크고, j가 0보다 크면
 		{
-			a[j] = a[j-1];
-			j--;
+			a[j] = a[j-1]; //뒤의 값을 앞의 값으로 바꾼다.
+			j--; //첫 번째 원소가 될 때까지 반복
 		}
-		a[j] = t;
+		a[j] = t; //정렬된 배열의 맞는 위치에 t 저장
 	}
 
 	printf("----------------------------------------------------------------\n");
-	printArray(a);
+	printArray(a); //정렬된 후의 배열 출력
 
 	return 0;
 }
 
-int bubbleSort(int *a)
+int bubbleSort(int *a) //배열을 버블정렬 하는 함수
 {
 	int i, j, t;
 
@@ -226,11 +226,11 @@ int bubbleSort(int *a)
 
 	printArray(a);
 
-	for(i = 0; i < MAX_ARRAY_SIZE; i++)
+	for(i = 0; i < MAX_ARRAY_SIZE; i++) //n^2 번 정도 반복
 	{
 		for (j = 0; j < MAX_ARRAY_SIZE; j++)
 		{
-			if (a[j-1] > a[j])
+			if (a[j-1] > a[j]) //앞의 값이 더 크면 바꾼다.
 			{
 				t = a[j-1];
 				a[j-1] = a[j];
@@ -245,7 +245,7 @@ int bubbleSort(int *a)
 	return 0;
 }
 
-int shellSort(int *a)
+int shellSort(int *a) //배열을 셸 정렬 하는 함수
 {
 	int i, j, k, h, v;
 
@@ -254,7 +254,7 @@ int shellSort(int *a)
 
 	printArray(a);
 
-	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2)
+	for (h = MAX_ARRAY_SIZE/2; h > 0; h /= 2) //h를 1보다 작아질 때까지 반복
 	{
 		for (i = 0; i < h; i++)
 		{
@@ -264,10 +264,10 @@ int shellSort(int *a)
 				k = j;
 				while (k > h-1 && a[k-h] > v)
 				{
-					a[k] = a[k-h];
+					a[k] = a[k-h]; //h만큼 떨어져있는 값을 선택정렬한다.
 					k -= h;
 				}
-				a[k] = v;
+				a[k] = v; 
 			}
 		}
 	}
@@ -277,7 +277,7 @@ int shellSort(int *a)
 	return 0;
 }
 
-int quickSort(int *a, int n)
+int quickSort(int *a, int n) //배열을 퀵 정렬 하는 함수(재귀적)
 {
 	int v, t;
 	int i, j;
